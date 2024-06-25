@@ -15,6 +15,16 @@ public class TripCrewConsoleAdapter {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
+        /*FIXME: 
+            paso1: gaurdar un array con los ids de los empleados a asignar con el id de la conexion 
+            pedir que ingrese todas las ids separadas por ","
+            leerlo como string, separar el string por ","
+            iterar por el array de partes, intentar convertir cada uno a un int
+            si se puede convertir en 
+            paso2: guardar en la bdd
+           
+         * 
+        */
 
         while (true) {
             System.out.println("1. Crear Tripulación de Viaje");
