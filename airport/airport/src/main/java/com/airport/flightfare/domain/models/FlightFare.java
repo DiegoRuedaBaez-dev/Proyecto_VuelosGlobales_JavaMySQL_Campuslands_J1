@@ -1,0 +1,56 @@
+package com.airport.flightfare.domain.models;
+
+public class FlightFare {
+    private int id;
+    private String description;
+    private String details;
+    private double value;
+
+    // Constructor para crear una nueva tarifa de vuelo
+    public FlightFare(String description, String details, double value) {
+        this.description = description;
+        this.details = details;
+        this.value = value;
+    }
+
+    // Constructor para actualizar una tarifa de vuelo existente
+    public FlightFare(int id, String description, String details, double value) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.value = value;
+    }
+
+    // Getters y Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+}
