@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.airport.city.application.CityService;
 import com.airport.city.domain.models.City;
 
+// hola
 public class CityConsoleAdapter {
     private final CityService cityService;
 
