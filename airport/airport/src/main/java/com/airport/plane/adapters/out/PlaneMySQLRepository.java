@@ -1,12 +1,17 @@
 package com.airport.plane.adapters.out;
 
-import com.airport.plane.domain.models.Plane;
-import com.airport.plane.infrastructure.PlaneRepository;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import com.airport.plane.domain.models.Plane;
+import com.airport.plane.infrastructure.PlaneRepository;
 
 public class PlaneMySQLRepository implements PlaneRepository {
     private final String url;
@@ -30,13 +35,14 @@ public class PlaneMySQLRepository implements PlaneRepository {
     public void save(Plane plane) {
     
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            String query = "INSERT INTO planes (plates, capacity, fabrication_date, id_status, id_model) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO planes (id, plates, capacity, fabrication_date, id_status, id_model) VALUES (?,?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setString(1, plane.getPlates());
-                statement.setInt(2, plane.getCapacity());
-                statement.setDate(3, Date.valueOf(plane.getFabricationDate()));
-                statement.setInt(4, plane.getIdStatus());
-                statement.setInt(5, plane.getIdModel());
+                statement.setInt(1, plane.getId());
+                statement.setString(2, plane.getPlates());
+                statement.setInt(3, plane.getCapacity());
+                statement.setDate(4, Date.valueOf(plane.getFabricationDate()));
+                statement.setInt(5, plane.getIdStatus());
+                statement.setInt(6, plane.getIdModel());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {

@@ -1,9 +1,9 @@
 package com.airport.plane.adapters.in;
 
-import java.util.Optional;
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import java.util.Scanner;
 
 import com.airport.plane.application.PlaneService;
 import com.airport.plane.domain.models.Plane;
@@ -31,6 +31,9 @@ public class PlaneConsoleAdapter {
 
             switch (choice) {
                 case 1:
+                    System.out.print("Ingrese el ID del avión: ");
+                    int giveId = scanner.nextInt();
+                    scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt()
                     System.out.print("Ingrese las placas del avión: ");
                     String createPlates = scanner.nextLine();
                     System.out.print("Ingrese la capacidad del avión: ");
@@ -45,7 +48,7 @@ public class PlaneConsoleAdapter {
                     int createModelId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
 
-                    Plane newPlane = new Plane(createPlates, createCapacity, createDate, createStatusId, createModelId);
+                    Plane newPlane = new Plane(giveId, createPlates, createCapacity, createDate, createStatusId, createModelId);
                     planeService.createPlane(newPlane);
                     break;
 

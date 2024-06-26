@@ -27,14 +27,14 @@ public class AirlineConsoleAdapter {
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
-                case 1:
+                case 1 -> {
                     System.out.print("Ingrese el nombre de la aerolínea: ");
                     String createName = scanner.nextLine();
                     Airline newAirline = new Airline(createName);
                     airlineService.createAirline(newAirline);
-                    break;
+                }
 
-                case 2:
+                case 2 -> {
                     System.out.print("Ingrese ID de la aerolínea a actualizar: ");
                     int updateId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
@@ -42,40 +42,37 @@ public class AirlineConsoleAdapter {
                     String updateName = scanner.nextLine();
                     Airline updatedAirline = new Airline(updateId, updateName);
                     airlineService.updateAirline(updatedAirline);
-                    break;
+                }
 
-                case 3:
+                case 3 -> {
                     System.out.print("Ingrese el ID de la aerolínea a buscar: ");
                     int findId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
 
                     Optional<Airline> airline = airlineService.getAirlineById(findId);
                     airline.ifPresentOrElse(
-                        a -> System.out.println("ID: " + a.getId() + ", Nombre: " + a.getName()),
-                        () -> System.out.println("Aerolínea no encontrada")
+                            a -> System.out.println("ID: " + a.getId() + ", Nombre: " + a.getName()),
+                            () -> System.out.println("Aerolínea no encontrada")
                     );
-                    break;
+                }
 
-                case 4:
+                case 4 -> {
                     System.out.print("Ingrese el ID de la aerolínea a borrar: ");
                     int deleteId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
                     airlineService.deleteAirline(deleteId);
-                    break;
+                }
 
-                case 5:
-                    airlineService.getAllAirlines().forEach(a -> {
+                case 5 -> airlineService.getAllAirlines().forEach(a -> {
                         System.out.println("ID: " + a.getId() + ", Nombre: " + a.getName());
                     });
-                    break;
 
-                case 6:
+                case 6 -> {
                     scanner.close();
                     System.exit(0);
-                    break;
+                }
 
-                default:
-                    System.out.println("Opción inválida, inténtelo de nuevo.");
+                default -> System.out.println("Opción inválida, inténtelo de nuevo.");
             }
         }
     }

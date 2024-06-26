@@ -11,15 +11,6 @@ public class Plane {
     private int idModel;
 
     // Constructor para crear un nuevo avión
-    public Plane(String plates, int capacity, LocalDate fabricationDate, int idStatus, int idModel) {
-        this.plates = plates;
-        this.capacity = capacity;
-        this.fabricationDate = fabricationDate;
-        this.idStatus = idStatus;
-        this.idModel = idModel;
-    }
-
-    // Constructor para actualizar un avión existente
     public Plane(int id, String plates, int capacity, LocalDate fabricationDate, int idStatus, int idModel) {
         this.id = id;
         this.plates = plates;
