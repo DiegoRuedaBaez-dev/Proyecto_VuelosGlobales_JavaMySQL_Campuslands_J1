@@ -2,6 +2,9 @@ package com.airport;
 import java.util.Scanner;
 
 import com.airport.roles.Admin;
+import com.airport.roles.Client;
+import com.airport.roles.Sales;
+import com.airport.roles.Tech;
 
 public class Menu {
     public static void main(String[] args) {
@@ -26,15 +29,15 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Has ingresado como: Agente de Ventas");
-                    // Aquí puedes agregar la lógica para Agente de Ventas
+                    Sales.sales();;
                     break;
                 case 3:
                     System.out.println("Has ingresado como: Técnico de Mantenimiento");
-                    // Aquí puedes agregar la lógica para Técnico de Mantenimiento
+                    Tech.tech();
                     break;
                 case 4:
                     System.out.println("Has ingresado como: Cliente");
-                    // Aquí puedes agregar la lógica para Cliente
+                    Client.client();
                     break;
                 case 5:
                     System.out.println("Saliendo...");
@@ -43,7 +46,7 @@ public class Menu {
                     System.out.println("Opción no válida. Por favor, intenta de nuevo.");
             }
         } while (option != 5);
-
+   
         scanner.close();
     }
 }
