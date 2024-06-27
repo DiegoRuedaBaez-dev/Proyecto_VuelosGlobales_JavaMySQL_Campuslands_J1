@@ -1,31 +1,26 @@
 package com.airport.roles;
 import java.util.Scanner;
 
-import com.airport.airport.adapters.in.AirportConsoleAdapter;
-import com.airport.airport.adapters.out.AirportMySQLRepository;
-import com.airport.airport.application.AirportService;
+import com.airport.revision.adapters.in.RevisionConsoleAdapter;
+import com.airport.revision.adapters.out.RevisionMySQLRepository;
+import com.airport.revision.application.RevisionService;
 
-import com.airport.plane.adapters.in.PlaneConsoleAdapter;
-import com.airport.plane.adapters.out.PlaneMySQLRepository;
-import com.airport.plane.application.PlaneService;
+import com.airport.revisionDetail.adapters.in.RevisionDetailConsoleAdapter;
+import com.airport.revisionDetail.adapters.out.RevisionDetailMySQLRepository;
+import com.airport.revisionDetail.application.RevisionDetailService;
 
-import com.airport.trip.adapters.in.TripConsoleAdapter;
-import com.airport.trip.adapters.out.TripMySQLRepository;
-import com.airport.trip.application.TripService;
-
-import com.airport.customer.adapters.in.CustomerConsoleAdapter;
-import com.airport.customer.adapters.out.CustomerMySQLRepository;
-import com.airport.customer.application.CustomerService;
+import com.airport.status.adapters.in.StatusConsoleAdapter;
+import com.airport.status.adapters.out.StatusMySQLRepository;
+import com.airport.status.application.StatusService;
 
 public class Tech {
     public static void tech() {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("¿Qué desea realizar?:");
-            System.out.println("1. Registrar ");
-            System.out.println("2. Gestionar Aeropuertos");
-            System.out.println("3. Gestionar Vuelos");
-            System.out.println("4. Gestionar Pasajeros");
-            System.out.println("5. Salir");
+            System.out.println("1. Gestionar Revisiones");
+            System.out.println("2. Gestionar Detalles de Revision");
+            System.out.println("3. Gestionar Estados");
+            System.out.println("4. Salir");
             
             System.out.print("Opción: ");
             int option = scanner.nextInt();
@@ -37,33 +32,27 @@ public class Tech {
 
             switch (option) {
                 case 1:
-                    PlaneMySQLRepository planeRepository = new PlaneMySQLRepository(url, user, password);
-                    PlaneService planeService = new PlaneService(planeRepository);
-                    PlaneConsoleAdapter planeConsoleAdapter = new PlaneConsoleAdapter(planeService);
+                    RevisionMySQLRepository revisionRepository = new RevisionMySQLRepository(url, user, password);
+                    RevisionService revisionService = new RevisionService(revisionRepository);
+                    RevisionConsoleAdapter revisionConsoleAdapter = new RevisionConsoleAdapter(revisionService);
 
-                    planeConsoleAdapter.start();
+                    revisionConsoleAdapter.start();
                     break;
                 case 2:
-                    AirportMySQLRepository airportMySQLRepository = new AirportMySQLRepository(url, user, password);
-                    AirportService airportService = new AirportService(airportMySQLRepository);
-                    AirportConsoleAdapter airportConsoleAdapter = new AirportConsoleAdapter(airportService);
+                    RevisionDetailMySQLRepository revisionDetailMySQLRepository = new RevisionDetailMySQLRepository(url, user, password);
+                    RevisionDetailService revisionDetailService = new RevisionDetailService(revisionDetailMySQLRepository);
+                    RevisionDetailConsoleAdapter revisionDetailConsoleAdapter = new RevisionDetailConsoleAdapter(revisionDetailService);
 
-                    airportConsoleAdapter.start();
+                    revisionDetailConsoleAdapter.start();
                     break;
                 case 3:
-                    TripMySQLRepository tripRepository = new TripMySQLRepository(url, user, password);
-                    TripService tripService = new TripService(tripRepository);
-                    TripConsoleAdapter tripConsoleAdapter = new TripConsoleAdapter(tripService);
+                    StatusMySQLRepository statusRepository = new StatusMySQLRepository(url, user, password);
+                    StatusService statusService = new StatusService(statusRepository);
+                    StatusConsoleAdapter statusConsoleAdapter = new StatusConsoleAdapter(statusService);
 
-                    tripConsoleAdapter.start();
+                    statusConsoleAdapter.start();
                     break;
                 case 4:
-                    CustomerMySQLRepository customerRepository = new CustomerMySQLRepository(url, user, password);
-                    CustomerService customerService = new CustomerService(customerRepository);
-                    CustomerConsoleAdapter customerConsoleAdapter = new CustomerConsoleAdapter(customerService);
-                    customerConsoleAdapter.start();
-                    break;
-                case 5:
                     System.out.println("Saliendo...");
                     break;
                 default:

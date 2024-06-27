@@ -17,6 +17,10 @@ import com.airport.customer.adapters.in.CustomerConsoleAdapter;
 import com.airport.customer.adapters.out.CustomerMySQLRepository;
 import com.airport.customer.application.CustomerService;
 
+import com.airport.flightfare.adapters.in.FlightFareConsoleAdapter;
+import com.airport.flightfare.adapters.out.FlightFareMySQLRepository;
+import com.airport.flightfare.application.FlightFareService;
+
 public class Admin {
     public static void admin() {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -25,8 +29,8 @@ public class Admin {
             System.out.println("2. Gestionar Aeropuertos");
             System.out.println("3. Gestionar Vuelos");
             System.out.println("4. Gestionar Pasajeros");
-            System.out.println("5. Salir");
-            
+            System.out.println("5. Gestionar Tarifas");
+            System.out.println("6. Salir");
             System.out.print("Opción: ");
             int option = scanner.nextInt();
             scanner.nextLine(); 
@@ -44,8 +48,8 @@ public class Admin {
                     planeConsoleAdapter.start();
                     break;
                 case 2:
-                    AirportMySQLRepository airportMySQLRepository = new AirportMySQLRepository(url, user, password);
-                    AirportService airportService = new AirportService(airportMySQLRepository);
+                    AirportMySQLRepository airportRepository = new AirportMySQLRepository(url, user, password);
+                    AirportService airportService = new AirportService(airportRepository);
                     AirportConsoleAdapter airportConsoleAdapter = new AirportConsoleAdapter(airportService);
 
                     airportConsoleAdapter.start();
@@ -61,9 +65,18 @@ public class Admin {
                     CustomerMySQLRepository customerRepository = new CustomerMySQLRepository(url, user, password);
                     CustomerService customerService = new CustomerService(customerRepository);
                     CustomerConsoleAdapter customerConsoleAdapter = new CustomerConsoleAdapter(customerService);
+                    
                     customerConsoleAdapter.start();
                     break;
+
                 case 5:
+                    FlightFareMySQLRepository flightRepository = new FlightFareMySQLRepository(url, user, password);
+                    FlightFareService flightFareService = new FlightFareService(flightRepository);
+                    FlightFareConsoleAdapter flightFareConsoleAdapter = new FlightFareConsoleAdapter(flightFareService);
+                    
+                    flightFareConsoleAdapter.start();
+                    break;
+                case 6:
                     System.out.println("Saliendo...");
                     break;
                 default:
