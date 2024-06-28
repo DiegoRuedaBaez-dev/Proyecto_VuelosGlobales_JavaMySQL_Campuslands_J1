@@ -1,4 +1,5 @@
 package com.airport;
+
 import java.util.Scanner;
 
 import com.airport.roles.Admin;
@@ -12,41 +13,45 @@ public class Menu {
         int option;
 
         do {
-            System.out.println("Seleccione el rol con el que desea ingresar:");
-            System.out.println("1. Ingresar como Administrador");
-            System.out.println("2. Ingresar como Agente de Ventas");
-            System.out.println("3. Ingresar como Técnico de Mantenimiento");
-            System.out.println("4. Ingresar como Cliente");
-            System.out.println("5. Salir");
+            System.out.println("Ingrese su usuario:");
+            String username = scanner.next();
+            System.out.println("Ingrese su clave:");
+            String password = scanner.next();
 
-            System.out.print("Opción: ");
+            String adminUsername = "admin";
+            String adminPassword = "adminPass";
+
+            String salesUsername = "sales";
+            String salesPassword = "salesPass";
+
+            String techUsername = "tech";
+            String techPassword = "techPass";
+
+            String clientUsername = "client";
+            String clientPassword = "clientPass";
+
+            if (username.equals(adminUsername) && password.equals(adminPassword)) {
+                System.out.println("Has ingresado como: Administrador");
+                Admin.admin();
+            } else if (username.equals(salesUsername) && password.equals(salesPassword)) {
+                System.out.println("Has ingresado como: Agente de Ventas");
+                Sales.sales();
+            } else if (username.equals(techUsername) && password.equals(techPassword)) {
+                System.out.println("Has ingresado como: Técnico de Mantenimiento");
+                Tech.tech();
+            } else if (username.equals(clientUsername) && password.equals(clientPassword)) {
+                System.out.println("Has ingresado como: Cliente");
+                Client.client();
+            } else {
+                System.out.println("Usuario o clave incorrecta. Por favor, intenta de nuevo.");
+            }
+
+            System.out.println("¿Desea intentar nuevamente? (1 para sí, 5 para salir)");
             option = scanner.nextInt();
 
-            switch (option) {
-                case 1:
-                    System.out.println("Has ingresado como: Administrador");
-                    Admin.admin();
-                    break;
-                case 2:
-                    System.out.println("Has ingresado como: Agente de Ventas");
-                    Sales.sales();;
-                    break;
-                case 3:
-                    System.out.println("Has ingresado como: Técnico de Mantenimiento");
-                    Tech.tech();
-                    break;
-                case 4:
-                    System.out.println("Has ingresado como: Cliente");
-                    Client.client();
-                    break;
-                case 5:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Por favor, intenta de nuevo.");
-            }
         } while (option != 5);
-   
+
+        System.out.println("Saliendo...");
         scanner.close();
     }
 }
