@@ -9,6 +9,11 @@ import com.airport.roles.Tech;
 
 public class Menu {
     public static void main(String[] args) {
+        System.out.println("╔═══════════════════════════╗");
+        System.out.println("║                           ║");
+        System.out.println("║  Agencia Vuelos Globales  ║");
+        System.out.println("║                           ║");
+        System.out.println("╚═══════════════════════════╝");
         Scanner scanner = new Scanner(System.in);
         int option;
 

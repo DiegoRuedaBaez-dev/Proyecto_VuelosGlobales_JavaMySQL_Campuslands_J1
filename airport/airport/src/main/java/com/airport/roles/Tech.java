@@ -4,11 +4,9 @@ import java.util.Scanner;
 import com.airport.revision.adapters.in.RevisionConsoleAdapter;
 import com.airport.revision.adapters.out.RevisionMySQLRepository;
 import com.airport.revision.application.RevisionService;
-
 import com.airport.revisionDetail.adapters.in.RevisionDetailConsoleAdapter;
 import com.airport.revisionDetail.adapters.out.RevisionDetailMySQLRepository;
 import com.airport.revisionDetail.application.RevisionDetailService;
-
 import com.airport.status.adapters.in.StatusConsoleAdapter;
 import com.airport.status.adapters.out.StatusMySQLRepository;
 import com.airport.status.application.StatusService;
@@ -31,32 +29,29 @@ public class Tech {
             String password = "campus2023";
 
             switch (option) {
-                case 1:
+                case 1 -> {
                     RevisionMySQLRepository revisionRepository = new RevisionMySQLRepository(url, user, password);
                     RevisionService revisionService = new RevisionService(revisionRepository);
                     RevisionConsoleAdapter revisionConsoleAdapter = new RevisionConsoleAdapter(revisionService);
 
                     revisionConsoleAdapter.start();
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     RevisionDetailMySQLRepository revisionDetailMySQLRepository = new RevisionDetailMySQLRepository(url, user, password);
                     RevisionDetailService revisionDetailService = new RevisionDetailService(revisionDetailMySQLRepository);
                     RevisionDetailConsoleAdapter revisionDetailConsoleAdapter = new RevisionDetailConsoleAdapter(revisionDetailService);
 
                     revisionDetailConsoleAdapter.start();
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     StatusMySQLRepository statusRepository = new StatusMySQLRepository(url, user, password);
                     StatusService statusService = new StatusService(statusRepository);
                     StatusConsoleAdapter statusConsoleAdapter = new StatusConsoleAdapter(statusService);
 
                     statusConsoleAdapter.start();
-                    break;
-                case 4:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Por favor, intenta de nuevo.");
+                }
+                case 4 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción no válida. Por favor, intenta de nuevo.");
             }
         }
     }
