@@ -11,6 +11,11 @@ import com.airport.roles.Tech;
 public class Menu {
     public static void main(String[] args) {
         //hace que las conexiones se cierren automáticamente a los 5 minutos
+        System.out.println("╔═══════════════════════════╗");
+        System.out.println("║                           ║");
+        System.out.println("║  Agencia Vuelos Globales  ║");
+        System.out.println("║                           ║");
+        System.out.println("╚═══════════════════════════╝");
         DriverManager.setLoginTimeout(300);
         Scanner scanner = new Scanner(System.in);
         int option = 0;
